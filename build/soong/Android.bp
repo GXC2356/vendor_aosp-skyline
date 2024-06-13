@@ -1,4 +1,4 @@
-// PixelOS soong configs
+// SkylineUI soong configs
 
 bootstrap_go_package {
     name: "soong-custom-generator",
@@ -477,6 +477,27 @@ uses_nothing_camera {
     soong_config_variables: {
         uses_nothing_camera: {
             cppflags: ["-DUSES_NOTHING_CAMERA"],
+        },
+    },
+}
+
+soong_config_module_type {
+    name: "camera_needs_client_info_lib_oplus",
+    module_type: "cc_defaults",
+    config_namespace: "customGlobalVars",
+    bool_variables: ["camera_needs_client_info_lib_oplus"],
+    properties: [
+        "cppflags",
+        "shared_libs",
+    ],
+}
+
+camera_needs_client_info_lib_oplus {
+    name: "camera_needs_client_info_lib_oplus_defaults",
+    soong_config_variables: {
+        camera_needs_client_info_lib_oplus: {
+            cppflags: ["-DCAMERA_NEEDS_CLIENT_INFO_LIB_OPLUS"],
+            shared_libs: ["vendor.oplus.hardware.cameraMDM@2.0"],
         },
     },
 }
